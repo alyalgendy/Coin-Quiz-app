@@ -33,6 +33,7 @@ my-weather-app/
 ├── script.js
 ├── darkmode.js
 ├── README.md
+├── image.png
 ```
 ---
 ## Contributing
