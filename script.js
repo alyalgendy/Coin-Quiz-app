@@ -315,7 +315,7 @@ const questions = [
         ]
     },
     {
-        question: "What is the currency of Malaysia 🇮🇾🇲🇾 ?",
+        question: "What is the currency of Malaysia 🇲🇾 ?",
         answers: [
             { text: "Ringgit", correct: true},
             { text: "Rupiah", correct: false},
@@ -1319,6 +1319,20 @@ const questions = [
 const questionElement = document.getElementById("question");
 const answerbutton = document.getElementById("answer-buttons");
 const nextbutton = document.getElementById("next-btn");
+const scoreDiv = document.querySelector('.score');
+
+function updateScoreDiv(){
+    const total = selectedQuestions.length || 0;
+    if(!scoreDiv) return;
+    // preserve any existing SVG by updating the leading text node if present
+    const text = `score: ${score}`;
+    if(scoreDiv.firstChild && scoreDiv.firstChild.nodeType === Node.TEXT_NODE){
+        scoreDiv.firstChild.nodeValue = text;
+    }else{
+        // fallback: replace content but keep a space for an icon if later added
+        scoreDiv.textContent = text;
+    }
+}
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -1340,6 +1354,7 @@ function startQuiz(){
     // pick 10 random questions (or fewer if there aren't 10 available)
     const count = Math.min(10, questions.length);
     selectedQuestions = shuffle([...questions]).slice(0, count);
+    updateScoreDiv();
     showQuestion();
 }
 
@@ -1408,11 +1423,13 @@ function selectAnswer(e){
         button.disabled = true;
     })
     nextbutton.style.display = "block";
+    updateScoreDiv();
 }
 
 function showScore(){
     resetState();
-    questionElement.innerHTML = `You collected ${score} coin 💰 from ${selectedQuestions.length} coins 🤑!`;
+    questionElement.innerHTML = `You collected ${score} coins 💰 from ${selectedQuestions.length} coins 🤑!`;
+    updateScoreDiv();
     nextbutton.innerHTML = "play Again";
     nextbutton.style.display = "block";
 }

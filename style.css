@@ -151,3 +151,13 @@ body{
 .darkmode #theme-switch svg:last-child{
     display: block;
 }
+
+.score{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
