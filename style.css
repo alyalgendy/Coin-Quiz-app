@@ -10,7 +10,7 @@
 :root{
     --bg-color: #001e4d; /* page background */
     --app-bg: #ffffff; /* card background */
-    --text-color: #ffffff; /* main text */
+    --text-color: #001e4d; /* main text */
     --muted-color: #6b7280; /* secondary text */
     --primary-color: #001e4d; /* accents / icons */
     --base-variant: #e6eef8; /* theme switch bg */
@@ -153,11 +153,15 @@ body{
 }
 
 .score{
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--text-color);
     position: absolute;
     top: 20px;
     right: 20px;
+    text-align: right;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.app {
+    position: relative;
 }
