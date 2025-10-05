@@ -10,7 +10,7 @@
 :root{
     --bg-color: #001e4d; /* page background */
     --app-bg: #ffffff; /* card background */
-    --text-color: #001e4d; /* main text */
+    --text-color: #ffffff; /* main text */
     --muted-color: #6b7280; /* secondary text */
     --primary-color: #001e4d; /* accents / icons */
     --base-variant: #e6eef8; /* theme switch bg */
