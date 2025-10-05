@@ -64,3 +64,11 @@ body{
 #next-btn:hover{
     background: #315b86;
 }
+
+.correct{
+    background: #00dc5f;
+}
+
+.incorrect{
+    background: #d00000;
+}
