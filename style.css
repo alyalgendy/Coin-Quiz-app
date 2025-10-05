@@ -1,8 +1,10 @@
-* {
+/* include emoji-capable fallback fonts so flag emoji render on more platforms */
+*
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', 'Noto Color Emoji', 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
 }
 /* Theme variables: default values (current look) */
 :root{
@@ -64,6 +66,11 @@ body{
     color: var(--text-color);
     font-weight: 600; 
 }
+/* Force emoji-capable fonts for question and answers so country flag emoji render in Chrome on Windows */
+#question,
+.btn{
+    font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', 'Poppins', sans-serif;
+}
 .btn{
     background: var(--btn-bg);
     color: var(--text-color);
@@ -76,6 +83,14 @@ body{
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.flag{
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    vertical-align: -2px;
+    margin: 0 6px;
 }
 .btn:hover:not([disabled]){
     background: var(--btn-hover-bg);
