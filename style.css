@@ -17,6 +17,50 @@ body{
 }
 .app h1{
     font-weight: 25px;
-    
-
+    color: #001e4d;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+}
+.quiz{
+   padding: 20px 0; 
+}
+.quiz h2{
+    font-size: 18px;
+    color: #001e4d;
+    font-weight: 600; 
+}
+.btn{
+    background: #fff;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn:hover{
+    background: #222;
+    color: #fff;
+}
+#next-btn{
+    background: #001e4d;
+    color: #fff;
+    font-weight: 500;
+    width: 150px;
+    border: 0;
+    padding: 10px;
+    margin: 20px auto 0;
+    cursor: pointer;
+    display: block;
+    border-radius: 4px;
+    display: none;
+    transition: all 0.3s;
+}
+#next-btn:hover{
+    background: #315b86;
 }
