@@ -4,11 +4,45 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+/* Theme variables: default values (current look) */
+:root{
+    --bg-color: #001e4d; /* page background */
+    --app-bg: #ffffff; /* card background */
+    --text-color: #001e4d; /* main text */
+    --muted-color: #6b7280; /* secondary text */
+    --primary-color: #001e4d; /* accents / icons */
+    --base-variant: #e6eef8; /* theme switch bg */
+    --btn-bg: #ffffff;
+    --btn-border: #222222;
+    --btn-hover-bg: #222222;
+    --btn-hover-color: #ffffff;
+    --next-btn-bg: #001e4d;
+    --correct-bg: #00dc5f;
+    --incorrect-bg: #d00000;
+}
+
+/* Dark mode overrides: toggle by adding `darkmode` class on a parent (e.g. <body>) */
+.darkmode{
+    --bg-color: #071728; /* darker page background */
+    --app-bg: #072033; /* darker card */
+    --text-color: #e6f0ff; /* light text */
+    --muted-color: #9fb4cc;
+    --primary-color: #ffd86b; /* warm accent for dark */
+    --base-variant: #0b2a3a;
+    --btn-bg: #072033;
+    --btn-border: #2e6a9e;
+    --btn-hover-bg: #315b86;
+    --btn-hover-color: #ffffff;
+    --next-btn-bg: #315b86;
+    --correct-bg: #06d6a0;
+    --incorrect-bg: #ff6b6b;
+}
 body{
-    background: #001e4d;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 .app{
-    background: #fff;
+    background: var(--app-bg);
     width: 90%;
     max-width: 600px;
     margin: 100px auto 0;
@@ -17,9 +51,9 @@ body{
 }
 .app h1{
     font-weight: 25px;
-    color: #001e4d;
+    color: var(--text-color);
     font-weight: 600;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
     padding-bottom: 30px;
 }
 .quiz{
@@ -27,15 +61,15 @@ body{
 }
 .quiz h2{
     font-size: 18px;
-    color: #001e4d;
+    color: var(--text-color);
     font-weight: 600; 
 }
 .btn{
-    background: #fff;
-    color: #222;
+    background: var(--btn-bg);
+    color: var(--text-color);
     font-weight: 500;
     width: 100%;
-    border: 1px solid #222;
+    border: 1px solid var(--btn-border);
     padding: 10px;
     margin: 10px 0;
     text-align: left;
@@ -44,15 +78,15 @@ body{
     transition: all 0.3s;
 }
 .btn:hover:not([disabled]){
-    background: #222;
-    color: #fff;
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-color);
 }
 .btn:disabled{
     cursor: no-drop;
 }
 #next-btn{
-    background: #001e4d;
-    color: #fff;
+    background: var(--next-btn-bg);
+    color: var(--btn-hover-color);
     font-weight: 500;
     width: 150px;
     border: 0;
@@ -65,13 +99,40 @@ body{
     transition: all 0.3s;
 }
 #next-btn:hover{
-    background: #315b86;
+    background: var(--btn-hover-bg);
 }
 
 .correct{
-    background: #00dc5f;
+    background: var(--correct-bg);
 }
 
 .incorrect{
-    background: #d00000;
+    background: var(--incorrect-bg);
+}
+#theme-switch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#theme-switch svg{
+    fill: var(--primary-color);
+}
+
+#theme-switch svg:last-child{
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child{
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child{
+    display: block;
 }
