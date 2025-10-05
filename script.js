@@ -353,8 +353,8 @@ const questions = [
     {
         question: "What is the currency of Iran?",
         answers: [
-            { text: "Rial", correct: false},
-            { text: "Toman", correct: true},
+            { text: "Rial", correct: true},
+            { text: "Toman", correct: false},
             { text: "Dirham", correct: false},
             { text: "Dinar", correct: false},
         ]
@@ -487,9 +487,43 @@ function selectAnswer(e){
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
+        score++;
     }else{
         selectedBtn.classList.add("incorrect");
     }
+    Array.from(answerbutton.children).forEach(button => {
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    })
+    nextbutton.style.display = "block";
 }
+
+function showScore(){
+    resetState();
+    questionElement.innerHTML = `You collected ${score} coin 💰 from ${questions.length} coins 🤑!`;
+    nextbutton.innerHTML = "play Again";
+    nextbutton.style.display = "block";
+}
+
+function handleNextButton(){
+    currentQuestionIndex++;
+    if(currentQuestionIndex < questions.length){
+        showQuestion();
+    }else{
+        showScore();
+    }
+}
+
+nextbutton.addEventListener("click", () => {
+    if(currentQuestionIndex < questions.length){
+        handleNextButton();
+    }else{
+        startQuiz();
+    }
+});
+
+
 
 startQuiz();
