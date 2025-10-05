@@ -8,10 +8,10 @@
 }
 /* Theme variables: default values (current look) */
 :root{
-    --bg-color: #001e4d; /* page background */
+    --bg-color: #2760bc; /* page background */
     --app-bg: #ffffff; /* card background */
     --text-color: #001e4d; /* main text */
-    --muted-color: #6b7280; /* secondary text */
+    --muted-color: #6b728013; /* secondary text */
     --primary-color: #001e4d; /* accents / icons */
     --base-variant: #e6eef8; /* theme switch bg */
     --btn-bg: #ffffff;
