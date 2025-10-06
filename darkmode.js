@@ -5,6 +5,7 @@ const THEME_DISABLED = 'disabled';
 
 const themeSwitch = document.getElementById('theme-switch') || document.querySelector('[data-theme-switch]');
 
+// function to safely get/set LocalStorage items
 function safeGet(key) {
     try {
         return localStorage.getItem(key);
@@ -14,6 +15,7 @@ function safeGet(key) {
     }
 }
 
+// function to safely get/set LocalStorage items
 function safeSet(key, value) {
     try {
         localStorage.setItem(key, value);
@@ -23,6 +25,7 @@ function safeSet(key, value) {
     }
 }
 
+// Apply or remove darkmode class and update toggle state
 function enableDarkmode() {
     document.body.classList.add('darkmode');
     safeSet(THEME_KEY, THEME_ENABLED);
@@ -32,6 +35,7 @@ function enableDarkmode() {
     }
 }
 
+// Apply or remove darkmode class and update toggle state
 function disableDarkmode() {
     document.body.classList.remove('darkmode');
     safeSet(THEME_KEY, THEME_DISABLED);
@@ -41,6 +45,7 @@ function disableDarkmode() {
     }
 }
 
+// apply saved preference if any
 function applyPreference() {
     const pref = safeGet(THEME_KEY);
     if (pref === THEME_ENABLED) {

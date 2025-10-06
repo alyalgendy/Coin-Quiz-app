@@ -1,7 +1,9 @@
+// Array of questions and answers
 const questions = [
     {
         question: "What is the currency of Japan 🇯🇵 ?",
-        answers: [
+        answers: // Array of correct and wrong answers
+         [
             { text: "Yen", correct: true},
             { text: "Won", correct: false},
             { text: "Dollar", correct: false},
@@ -1313,14 +1315,106 @@ const questions = [
             { text: "Dong", correct: false},
             { text: "Dollar", correct: false},
         ]
+    },
+    {
+        question: "What is the currency of Botswana? 🇧🇼 ",
+        answers: [
+            { text: "Pula", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Laos? 🇱🇦",
+        answers: [
+            { text: "Kip", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Georgia? 🇬🇪",
+        answers: [
+            { text: "Lari", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Namibia? 🇳🇦",
+        answers: [
+            { text: "Namibian Dollar", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Mauritius? 🇲🇺",
+        answers: [
+            { text: "Mauritian Rupee", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Mongolia? 🇲🇳",
+        answers: [
+            { text: "Tögrög", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Kazakhstan? 🇰🇿",
+        answers: [
+            { text: "Tenge", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Guyana? 🇬🇾",
+        answers: [
+            { text: "Guyanese Dollar", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of North Macedonia? 🇲🇰",
+        answers: [
+            { text: "Denar", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
+    },
+    {
+        question: "What is the currency of Eswatini? 🇸🇿",
+        answers: [
+            { text: "Lilangeni", correct: true},
+            { text: "Ringgit", correct: false},
+            { text: "Dollar", correct: false},
+            { text: "Rial", correct: false},
+        ]
     }
-];
+]
 
+// get all required elements
 const questionElement = document.getElementById("question");
 const answerbutton = document.getElementById("answer-buttons");
 const nextbutton = document.getElementById("next-btn");
 const scoreDiv = document.querySelector('.score');
 
+// update the score display (if present)
 function updateScoreDiv(){
     const total = selectedQuestions.length || 0;
     if(!scoreDiv) return;
@@ -1334,6 +1428,7 @@ function updateScoreDiv(){
     }
 }
 
+// quiz state variables
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedQuestions = [];
@@ -1347,6 +1442,7 @@ function shuffle(array){
     return array;
 }
 
+// function to start the quiz
 function startQuiz(){
     currentQuestionIndex = 0;
     score = 0;
@@ -1358,6 +1454,7 @@ function startQuiz(){
     showQuestion();
 }
 
+// function to show a question
 function showQuestion(){
     resetState();
     let currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -1373,6 +1470,7 @@ function showQuestion(){
         return iso.toLowerCase();
     }
 
+    // regex to match flag emojis (pairs of regional indicator symbols)
     const flagRegex = /[\u{1F1E6}-\u{1F1FF}]{2}/gu;
     const renderedQuestion = (questionNo + ". " + currentQuestion.question).replace(flagRegex, (m) => {
         try{
@@ -1399,7 +1497,7 @@ function showQuestion(){
     })
 }
 
-
+// function to reset the state for next question
 function resetState(){
     nextbutton.style.display = "none";
     while(answerbutton.firstChild){
@@ -1407,6 +1505,7 @@ function resetState(){
     }
 }
 
+// function to select an answer
 function selectAnswer(e){
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
@@ -1426,6 +1525,7 @@ function selectAnswer(e){
     updateScoreDiv();
 }
 
+//function to show the final score
 function showScore(){
     resetState();
     questionElement.innerHTML = `You collected ${score} coins 💰 from ${selectedQuestions.length} coins 🤑!`;
@@ -1434,6 +1534,7 @@ function showScore(){
     nextbutton.style.display = "block";
 }
 
+// function to handle the next button click
 function handleNextButton(){
     currentQuestionIndex++;
     if(currentQuestionIndex < selectedQuestions.length){
@@ -1443,6 +1544,7 @@ function handleNextButton(){
     }
 }
 
+// event listener for the next button
 nextbutton.addEventListener("click", () => {
     if(currentQuestionIndex < selectedQuestions.length){
         handleNextButton();
@@ -1452,5 +1554,5 @@ nextbutton.addEventListener("click", () => {
 });
 
 
-
+// start the quiz when the page loads
 startQuiz();
